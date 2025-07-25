@@ -25,9 +25,9 @@ class LyricsApp:
         bubble_image = Image.open("speechbubble.png").convert("RGBA")
         speech_bubble = ImageTk.PhotoImage(bubble_image)
 
-        self.canvas = Canvas(mainframe, width=400, height=500)
+        self.canvas = Canvas(mainframe, width=500, height=500)
         self.canvas.grid(column=0, row=0, columnspan=4, sticky="nsew")
-        self.quote_s = self.canvas.create_text(200,200,text='placeholder', width=400,font=('Arial', 32, 'bold'))
+        self.quote_s = self.canvas.create_text(250,250,text='placeholder', width=400,font=('Arial', 28, 'bold'))
 
 
         em_button.image = mini_image
@@ -43,5 +43,6 @@ class LyricsApp:
 
 
 root = Tk()
+initialize = requests.get(url)
 LyricsApp(root)
 root.mainloop()
