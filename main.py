@@ -1,13 +1,14 @@
+"""GUI for displaying random Eminem Lyrics from Eminem quotes API"""
 from tkinter import *
-from PIL import ImageTk, Image
 from tkinter import ttk
+from PIL import ImageTk, Image
 import requests
 
+URL = 'https://eminem-quotes-api.onrender.com/'
 
-url = 'https://eminem-quotes-api.onrender.com/'
 
 class LyricsApp:
-
+    """Create a Window for displaying quotes."""
     def __init__(self, root):
         root.title('Random Lyrics from Eminem')
         root.geometry("1024x768")
@@ -24,7 +25,8 @@ class LyricsApp:
         self.canvas = Canvas(mainframe, width=800, height=600)
         self.canvas.create_image(400, 300, image=speech_bubble)
         self.canvas.grid(column=0, row=0, columnspan=4, sticky="nsew")
-        self.quote_s = self.canvas.create_text(400,250,text='placeholder', width=500,font=('Arial', 28, 'bold'))
+        self.quote_s = self.canvas.create_text(400,250,text="Click em ",
+        width=500,font=('Arial', 28, 'bold'))
 
         pil_image = Image.open("SlimShady.png").convert("RGBA")
         resized = pil_image.resize((155,155))
@@ -35,9 +37,12 @@ class LyricsApp:
 
         em_button.image = mini_image
         self.canvas.image = speech_bubble
-    def the_quote(self, *args):
+
+
+    def the_quote(self):
+        """Fetches quote from the API"""
         try:
-            clicked = requests.get(url)
+            clicked = requests.get(URL)
             if clicked.status_code == 200:
                 data = clicked.json()
                 quotes = data['quotes']
@@ -45,8 +50,7 @@ class LyricsApp:
         except ValueError:
             pass
 
-
-root = Tk()
-LyricsApp(root)
-initialize = requests.get(url)
-root.mainloop()
+em_app = Tk()
+LyricsApp(em_app)
+initialize = requests.get(URL)
+em_app.mainloop()
