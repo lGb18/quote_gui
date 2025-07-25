@@ -17,8 +17,8 @@ class LyricsApp:
         mainframe.grid(column=0, row=0)
         root.columnconfigure(0, weight =1)
 
-        bubble_image = Image.open("speech-bubble-png-13.png").convert("RGBA")
-        bubble_image = bubble_image.resize((700, 600))
+        bubble_image = Image.open("empy_speech-modified.png")
+        bubble_image = bubble_image.resize((800, 800))
         speech_bubble = ImageTk.PhotoImage(bubble_image)
 
         self.canvas = Canvas(mainframe, width=800, height=600)
@@ -47,6 +47,6 @@ class LyricsApp:
 
 
 root = Tk()
-initialize = requests.get(url)
 LyricsApp(root)
+initialize = requests.get(url)
 root.mainloop()
