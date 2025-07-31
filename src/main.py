@@ -19,11 +19,11 @@ class LyricsApp:
         root.columnconfigure(0, weight =1)
 
         """Initialize and resize images"""
-        bubble_image = Image.open("empy_speech-modified.png")
+        bubble_image = Image.open("../data/images/empy_speech-modified.png")
         bubble_image = bubble_image.resize((800, 800))
         speech_bubble = ImageTk.PhotoImage(bubble_image)
 
-        pil_image = Image.open("SlimShady.png").convert("RGBA")
+        pil_image = Image.open("../data/images/SlimShady.png").convert("RGBA")
         resized = pil_image.resize((155, 155))
         mini_image = ImageTk.PhotoImage(resized)
 
