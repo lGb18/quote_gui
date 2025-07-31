@@ -49,8 +49,14 @@ class LyricsApp:
                 self.canvas.itemconfig(self.quote_s, text= quotes)
         except ValueError:
             pass
+        except requests.exceptions.ConnectionError:
+            error_text = 'Connection failed. Please check your internet and retry.'
+            self.canvas.itemconfig(self.quote_s, text=error_text)
 
 em_app = Tk()
 LyricsApp(em_app)
-initialize = requests.get(URL)
+try:
+    initialize = requests.get(URL)
+except requests.exceptions.ConnectionError:
+    pass
 em_app.mainloop()
