@@ -3,12 +3,13 @@ from tkinter import *
 from tkinter import ttk
 from PIL import ImageTk, Image
 import requests
-
+from image_dir import get_image
 URL = 'https://eminem-quotes-api.onrender.com/'
 
 
 class LyricsApp:
     """Create a Window for displaying quotes."""
+
     def __init__(self, root):
         root.title('Eminem Quotes API GUI')
         root.geometry("1024x768")
@@ -19,11 +20,13 @@ class LyricsApp:
         root.columnconfigure(0, weight =1)
 
         """Initialize and resize images"""
-        bubble_image = Image.open("../data/images/empy_speech-modified.png")
+        image_speech = 'empy_speech-modified.png'
+        bubble_image = Image.open(get_image(image_speech))
         bubble_image = bubble_image.resize((800, 800))
         speech_bubble = ImageTk.PhotoImage(bubble_image)
 
-        pil_image = Image.open("../data/images/SlimShady.png").convert("RGBA")
+        image_slim = 'SlimShady.png'
+        pil_image = Image.open(get_image(get_image(image_slim))).convert("RGBA")
         resized = pil_image.resize((155, 155))
         mini_image = ImageTk.PhotoImage(resized)
 
