@@ -4,6 +4,7 @@ from tkinter import ttk
 from PIL import ImageTk, Image
 import requests
 from image_dir import get_image
+from wake_API import wake_api
 URL = 'https://eminem-quotes-api.onrender.com/'
 
 
@@ -60,5 +61,5 @@ class LyricsApp:
 
 em_app = Tk()
 LyricsApp(em_app)
-
+wake_api()
 em_app.mainloop()
