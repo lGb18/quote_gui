@@ -60,9 +60,5 @@ class LyricsApp:
 
 em_app = Tk()
 LyricsApp(em_app)
-"""Wake up API from render.com"""
-try:
-    initialize = requests.get(URL)
-except requests.exceptions.ConnectionError:
-    pass
+
 em_app.mainloop()
